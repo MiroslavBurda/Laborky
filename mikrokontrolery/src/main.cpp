@@ -1,9 +1,8 @@
 #include <Arduino.h>
+// #include "blikani.h"
+// #include "tlacitka_ledky.h"
+// #include "tlacitka_serial.h"
+#include "tlacitka_kliknuti.h"
 
-void setup() {
-  // put your setup code here, to run once:
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+extern void loop();
+extern void setup();
