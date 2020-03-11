@@ -4,5 +4,5 @@
 // #include "tlacitka_serial.h"
 // #include "tlacitka_kliknuti.h"
 
-extern void loop();
 extern void setup();
+extern void loop();
