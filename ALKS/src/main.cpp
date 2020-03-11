@@ -54,7 +54,7 @@ void loop() // this part works in cycle
       printf("%i: %i ; ", 1, analogRead ( POT1 ) ); // write value of potenciometer
       printf("%i: %i \n", 2, analogRead ( POT2 ) );
     
-ledcWrite (0, analogRead ( POT1 )/4); // potentiometer connect to PWM   
+ledcWrite (0, analogRead ( POT1 )/4); // potentiometer connect to PWM   - ahoj 
 
 
 
