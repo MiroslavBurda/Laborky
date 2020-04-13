@@ -7,5 +7,5 @@ void setup(){
 
 void loop(){
     Serial.println(!digitalRead(26));
-    // Serial.println(digitalRead(26) ? "VYPNUTO" : "ZAPNUTO");
+    Serial.println(digitalRead(26) ? "VYPNUTO" : "ZAPNUTO");
 }

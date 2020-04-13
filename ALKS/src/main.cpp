@@ -45,7 +45,7 @@ void setup() // this part run once
 
 void loop() // this part works in cycle
 {  
-    if (( digitalRead ( SW1 )) == LOW ) // pushed switch 1 
+   if (( digitalRead ( SW1 )) == LOW ) // pushed switch 1 
         { digitalWrite (L_R , HIGH );}
     else { digitalWrite (L_R , LOW );}
 
@@ -55,10 +55,10 @@ void loop() // this part works in cycle
 
     if (( digitalRead ( SW3 )) == LOW )
         { digitalWrite (L_G , HIGH );}          
-    else { digitalWrite (L_G , LOW );}    
+    else { digitalWrite (L_G , LOW );}   
 
     printf("%i: %i ; ", 1, analogRead ( POT1 ) );
-    printf("%i: %i \n", 2, analogRead ( POT2 ) );
+     printf("%i: %i \n", 2, analogRead ( POT2 ) );
 
  /*   delay (300); // pause 300 miliseconds
         digitalWrite (L_R , HIGH ); // switch on red LED
