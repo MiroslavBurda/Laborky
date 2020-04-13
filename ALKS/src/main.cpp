@@ -75,6 +75,11 @@ if ( ( digitalRead ( SW2 )) == LOW )
 
 ledcWrite (1, a); // potentiometer connect to PWM   
 
+      printf("%i: %i ; ", 1, analogRead ( POT1 ) ); // write value of potenciometer
+      printf("%i: %i \n", 2, analogRead ( POT2 ) );
+    
+ledcWrite (0, analogRead ( POT1 )/4); // potentiometer connect to PWM   - ahoj 
+
 
 
 }
