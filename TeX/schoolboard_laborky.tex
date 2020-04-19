@@ -20,6 +20,30 @@
 %\hyperlink{label}{proklikávací_text} - odkaz na text 
 % \hypertarget{label}{cíl_odkazu} - cíl odkazu  
 
+\usepackage{xcolor}  % zapne možnost používání barev, mj. pro \definecolor
+\definecolor{mygreen}{RGB}{0,150,0} % nastavení barev odkazů 
+\definecolor{myblue}{RGB}{0,0,200} 
+\definecolor{commentgreen}{RGB}{0,100,0} % nastavení barev pro příklady z C++
+\definecolor{deepblue}{rgb}{0,0,0.7}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage[T1]{fontenc} % import tučného písma typu tt pro prostředí listings
+\usepackage{listings} % balíček pro obarvování syntaxe ukázek programů v textu
+%\usepackage{listingsutf8} %nutné pro \usepackage{listings} aby to jelo v UTF-8
+\lstset{
+	extendedchars 	= false,
+	language      	= C++,
+	basicstyle      = \ttfamily,
+	keywordstyle     = \bfseries,
+	%identifierstyle = \color{brown},
+	commentstyle    = \color{commentgreen},
+	otherkeywords	= {self},             % Add keywords here
+	emphstyle		= \color{deepred},    % Custom highlighting style
+	stringstyle	 	= \color{deepgreen},		
+	keywordstyle	=\color{deepblue},
+	stringstyle     = \color{magenta},
+} % písmo a  barvičky  by možná chtěly doladit - nějaký dobrovolník? 
 
 \hypersetup{colorlinks=true, linkcolor=myblue, urlcolor=mygreen, citecolor=blue, anchorcolor = magenta,
 	linktocpage = true, frenchlinks } % nastavení barvy odkazů 
@@ -52,59 +76,97 @@
 
 \section{Úvod}
 
-Postup práce: 
-\begin{itemize}
+\begin{enumerate}
 	\item Představení desky Schoolboard a jejích součástí. 
 	\item Představení programu Visual Studio Code, program i s rozšířením PlatformIO je potřeba mít pro studenty nainstalovaný předem. 
 	\item Ukázka nahrání programu (\textit{test.h}) do čipu na desce a vysvětlení významu jednotlivých příkazů. 
 	\item Vzory pro jednotlivé programy si studenti vždy nahrají do čipu na desce a potom je zkusí upravit podle 
 	zadání.\footnote{Přitom je potřeba dodržovat pojmenování proměnných i souborů bez diakritiky a bez mezer 
-	a počítat s tím že v jazyku C++ se rozlišují velká a malá písmena. } 
+	a počítat s tím, že v jazyku C++ se rozlišují velká a malá písmena. } 
 	
-\end{itemize}
+\end{enumerate}
 
 \section{Blikání LED}
 
-\begin{itemize} 
+\begin{enumerate} 
 	\item Do čipu nahrejte program \textit{blink.h}. 
 	\item Upravte program tak, aby blikala zelená LED s periodou 0,5 s. 
-\end{itemize} 
+\end{enumerate} 
 
 \section{Čtení tlačítka a výpis do sériové linky}
 
-\begin{itemize} 
+\begin{enumerate} 
 	\item Do čipu nahrejte program \textit{button\_serial.h}.
 	\item Otevřete terminál a sledujte činnost programu.  
 	\item Ukončete terminál můžete stiskem Ctrl+C, napřed je potřeba kliknout myší do prostoru terminálu. 
 	Vždy před nahráním programu do čipu je potřeba ukončit terminál!
 	\item Upravte program tak, aby posílal data do terminálu přiměřenou rychlostí, např. 2x za sekundu. 
-\end{itemize} 
+\end{enumerate} 
 
 \section{Počítání stisků tlačítka} 
 
-\begin{itemize} 
+\begin{enumerate} 
 	\item Do čipu nahrejte program \textit{button\_counting.h}. 
 	\item Stiskněte opakovaně tlačítko 0 a sledujte výpis na terminálu. Co pozorujete? 
 	\item Upravte program tak, aby se při krátkém stisku tlačítka zvedla hodnota na terminálu vždy o 1.
-\end{itemize} 
+\end{enumerate} 
 
+\section{Rozsvícení LED na stisk tlačítka} \label{button_LED}
 
-\end{document}
-	*********************************************************************************************
+\begin{enumerate}
+	\item Do čipu nahrejte program \textit{button\_LED.h}.
+	\item Upravte program tak, aby se LED při stisknutí tlačítka rozsvítila na 1,5 sekundy. \label{button_LED2}
+	\item Upravte program tak, aby se LED při stisknutí tlačítka rozsvítila na 1,5 sekundy, a to bez použití funkce \textit{delay()} -- program se nebude zastavovat. Pomůže vám funkce \textit{millis()}\footnote{Funkce \textit{millis()} vrací počet milisekund od zapnutí nebo resetování čipu.}.
+	\label{button_LED3}
+\end{enumerate}
 
-button\_LED
+\section{Změna jasu LED}
 
-\section{NĚKAM SE MUSÍ NAPSAT ŘEŠENÍ a pokyny pro učitele}
-
-
-	\section{Rozsvícení LED na stisk tlačítka}
-
-
-
-
-\begin{itemize}
+\begin{enumerate}
+	\item Do čipu nahrejte program \textit{LED\_PWM.h}. Pokuste se pochopit, jak program funguje.
+	\item Upravte program tak, aby se jas LED při krátkém stisku tlačítka po prvním stisku tlačítka zesiloval vždy po 1/4 a po dosažení maxima zase po 1/4 zeslaboval. 
 	
-	\item rozsviť LED na x sekund při změně stavu tlačítka 
+\end{enumerate}
+
+\renewcommand{\refname}{Další zdroje}
+\begin{thebibliography}{1}
+	\bibitem{salyx}
+	\textit{Výuka programování v C/C++} [online] Petr Bílek  [cit. 2020-03-02] Dostupné z:  
+	\url{https://www.sallyx.org/sally/c}
+	\bibitem{itnetwork}	
+	\textit{Další kurzy C/C++} [online] https://www.itnetwork.cz [cit. 2020-03-02] Dostupné z:  \url{https://www.itnetwork.cz/cplusplus}
+	\bibitem{_dokumentace}	
+	\textit{ROBOTICKÝ MANUÁL} [online] Miroslav Burda a kol. [cit. 2020-03-02] 
+	Dostupné z:  \url{https://roboticsbrno.github.io/RoboticsBrno-guides/RoboticsManual.pdf}		
+\end{thebibliography}
+
+\newpage
+\section{ŘEŠENÍ k vybraným příkladům}
+
+Kapitola \ref{button_LED}, úkol \ref{button_LED2}:
+\begin{lstlisting}
+void loop(){
+	if (( digitalRead ( SW1 )) == LOW )
+	{ digitalWrite (L_R, HIGH );
+		delay(2000);}
+	else { digitalWrite (L_R, LOW );}
+}
+\end{lstlisting}  % nebo použít něco jako \lstinputlisting{priklady_c/blikani_LED1.cpp}
+
+\hrulefill
+
+Kapitola \ref{button_LED}, úkol \ref{button_LED3}:
+\lstinputlisting{button_LED_res.h}
+
+
+
+
+
+\end{document} 
+********************************************************************************************
+
+\begin{enumerate}
+	
 	\item čtení ultrazvuku 
 	\item rozsvícení LED podle ultrazvuku 
 	\item regulace jasu LED pomocí PWM - přímo čtyřstupňová
@@ -119,7 +181,7 @@ button\_LED
 	
 	\item zprovoznit I2C ? více zařízení na I2C ???? 
 	
-\end{itemize}
+\end{enumerate}
 
 - jaké máme senzory? (6x) infra, ultra, 
 

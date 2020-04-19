@@ -41,3 +41,11 @@ void loop() // this part works in cycle
     Serial.println(digitalRead(SW0) ? "VYPNUTO" : "ZAPNUTO"); // if (digitalRead(SW0) > 0) {Serial.println ("VYPNUTO");} else {Serial.println ("ZAPNUTO");}  }
     //  Ctrl+C will switch off terminal  
 }
+
+/* 
+This is 
+an example 
+of long comment. 
+
+Good luck!
+*/ 
