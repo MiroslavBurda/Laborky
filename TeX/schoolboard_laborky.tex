@@ -83,6 +83,8 @@
 	\item Vzory pro jednotlivé programy si studenti vždy nahrají do čipu na desce a potom je zkusí upravit podle 
 	zadání.\footnote{Přitom je potřeba dodržovat pojmenování proměnných i souborů bez diakritiky a bez mezer 
 	a počítat s tím, že v jazyku C++ se rozlišují velká a malá písmena. } 
+	\item Tato laboratorní práce počítá s tím, že studenti mají za sebou úvodní kurz programování a alespoň matně si pamatují, jak fungují proměnné, podmínky a cykly.
+	\item Úkoly označené hvězdičkou * jsou volitelné. 
 	
 \end{enumerate}
 
@@ -90,7 +92,9 @@
 
 \begin{enumerate} 
 	\item Do čipu nahrejte program \textit{blink.h}. 
-	\item Upravte program tak, aby blikala zelená LED s periodou 0,5 s. 
+	\item Upravte program tak, aby blikala zelená LED s periodou 0,5 s. \\
+	Video s dvěma možnými řešeními je \href{https://www.youtube.com/watch?reload=9&v=ZFAgfd_2ZHE&feature=youtu.be}{zde}.
+	
 \end{enumerate} 
 
 \section{Čtení tlačítka a výpis do sériové linky}
@@ -100,31 +104,37 @@
 	\item Otevřete terminál a sledujte činnost programu.  
 	\item Ukončete terminál můžete stiskem Ctrl+C, napřed je potřeba kliknout myší do prostoru terminálu. 
 	Vždy před nahráním programu do čipu je potřeba ukončit terminál!
-	\item Upravte program tak, aby posílal data do terminálu přiměřenou rychlostí, např. 2x za sekundu. 
+	\item Upravte program tak, aby posílal data do terminálu přiměřenou rychlostí, např. 2x za sekundu. Jedna z možných variant je na tomto \href{https://www.youtube.com/watch?v=cfciuCwKXuI&list=PLUcO3yZImuGwjBzWMluj8Pgu0FHjgFYBd&index=5&t=0s}{videu}.
 \end{enumerate} 
 
-\section{Počítání stisků tlačítka} 
+\section{Počítání stisků tlačítka} \label{counting_LED}
 
 \begin{enumerate} 
 	\item Do čipu nahrejte program \textit{button\_counting.h}. 
 	\item Stiskněte opakovaně tlačítko 0 a sledujte výpis na terminálu. Co pozorujete? 
-	\item Upravte program tak, aby se při krátkém stisku tlačítka zvedla hodnota na terminálu vždy o 1.
+	\item Upravte program tak, aby se při krátkém stisku tlačítka zvedla hodnota na terminálu vždy o 1. \label{counting_LED3}
 \end{enumerate} 
 
 \section{Rozsvícení LED na stisk tlačítka} \label{button_LED}
 
 \begin{enumerate}
-	\item Do čipu nahrejte program \textit{button\_LED.h}.
+	\item Do čipu nahrejte program \textit{button\_LED.h}.\label{button_LED1}
 	\item Upravte program tak, aby se LED při stisknutí tlačítka rozsvítila na 1,5 sekundy. \label{button_LED2}
-	\item Upravte program tak, aby se LED při stisknutí tlačítka rozsvítila na 1,5 sekundy, a to bez použití funkce \textit{delay()} -- program se nebude zastavovat. Pomůže vám funkce \textit{millis()}\footnote{Funkce \textit{millis()} vrací počet milisekund od zapnutí nebo resetování čipu.}.
+	\item Upravte program  z bodu \ref{button_LED1} tak, aby se při stisku tlačítka rozsvítily všechny LED. Jedno z možných řešení je na videu \href{https://www.youtube.com/watch?v=ugJcHznFWD0&list=PLUcO3yZImuGwjBzWMluj8Pgu0FHjgFYBd&index=2}{zde}. 
+	\item * Do čipu nahrejte program \textit{push\_LED.h} , který rozsvěcí jednu LED po druhé -- viz 
+	\href{https://www.youtube.com/watch?v=Umqs3IwrQpc}{video}. Proměnná \textit{led} funguje jako tzv. \textbf{stavová} -- uchovává informaci o tom, v jakém stavu se program právě nachází. 
+	
+	\item * Upravte program z bodu \ref{button_LED2} tak, aby se LED při stisknutí tlačítka rozsvítila na 1,5 sekundy, a to bez použití funkce \textit{delay()} -- program se nebude zastavovat. Pomůže vám funkce \textit{millis()}\footnote{Funkce \textit{millis()} vrací počet milisekund od zapnutí nebo resetování čipu.}.
 	\label{button_LED3}
+	
 \end{enumerate}
 
-\section{Změna jasu LED}
+\section{Změna jasu LED} \label{PWM_LED}
 
 \begin{enumerate}
-	\item Do čipu nahrejte program \textit{LED\_PWM.h}. Pokuste se pochopit, jak program funguje.
-	\item Upravte program tak, aby se jas LED při krátkém stisku tlačítka po prvním stisku tlačítka zesiloval vždy po 1/4 a po dosažení maxima zase po 1/4 zeslaboval. 
+	\item Do čipu nahrejte program \textit{PWM\_LED.h}. Pokuste se pochopit, jak program funguje.
+	\item Upravte program tak, aby se po každém krátkém stisku tlačítka jas LED zesiloval vždy po 1/4. Po dosažení maxima se LED vypne a cyklus se opakuje. \label{PWM_LED2}
+	\item * Upravte program tak, aby se po každém krátkém stisku tlačítka jas LED zesiloval vždy po 1/4 a po dosažení maxima zase po 1/4 zeslaboval. \label{PWM_LED3}
 	
 \end{enumerate}
 
@@ -143,6 +153,18 @@
 \newpage
 \section{ŘEŠENÍ k vybraným příkladům}
 
+Kapitola \ref{counting_LED}, úkol \ref{counting_LED3}:
+\begin{lstlisting}
+void loop(){
+	if ( !digitalRead(SW0) ) c=c+1;
+	Serial.println(c);
+	delay (200);
+}
+\end{lstlisting}  % nebo použít něco jako \lstinputlisting{priklady_c/blikani_LED1.cpp}
+
+\hrulefill
+
+
 Kapitola \ref{button_LED}, úkol \ref{button_LED2}:
 \begin{lstlisting}
 void loop(){
@@ -151,16 +173,30 @@ void loop(){
 		delay(2000);}
 	else { digitalWrite (L_R, LOW );}
 }
-\end{lstlisting}  % nebo použít něco jako \lstinputlisting{priklady_c/blikani_LED1.cpp}
+\end{lstlisting} 
 
 \hrulefill
 
 Kapitola \ref{button_LED}, úkol \ref{button_LED3}:
 \lstinputlisting{button_LED_res.h}
 
+\hrulefill
 
+Kapitola \ref{PWM_LED}, úkol \ref{PWM_LED2}:
+\begin{lstlisting}
+void loop() // this part works in cycle
+{  
+	if (( digitalRead ( SW3 )) == LOW ) x = x + 250;
+	if (x > 1000) x = 0;
+	ledcWrite (0, x);
+	delay(200);
+}
+\end{lstlisting}
 
+\hrulefill
 
+Kapitola \ref{PWM_LED}, úkol \ref{PWM_LED3}:
+\lstinputlisting{PWM_LED_res.h}
 
 \end{document} 
 ********************************************************************************************
