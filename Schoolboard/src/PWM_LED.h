@@ -1,10 +1,9 @@
-#include <Arduino.h>
-#include "pinout.h"
-
 int x = 0;
 
 void setup(){
-    pinMode(L_R, OUTPUT);  
+    pinMode(L_R, OUTPUT); 
+    pinMode(SW3, INPUT_PULLUP); // prepared for task 2
+
     ledcSetup (0, 1000 , 10); // create PWM
     // ledcSetup ( channel , freq , resolution )
     // channel = 0 - 15

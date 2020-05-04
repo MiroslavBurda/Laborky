@@ -1,6 +1,3 @@
-#include <Arduino.h>
-#include "pinout.h"
-
 void setup(){
     Serial.begin(115200);
     pinMode(SW1, INPUT_PULLUP); 
