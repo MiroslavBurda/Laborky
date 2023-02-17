@@ -1,18 +1,20 @@
 #include <Arduino.h>
 #include "pinout.h"
 
-void setup(){
-    pinMode(SW1, INPUT_PULLUP); 
-    Serial.begin(115200);
+void setup()
+{
+    pinMode(LED_R, OUTPUT);
+    pinMode(LED_G, OUTPUT);
+    pinMode(LED_B, OUTPUT);
+
+    pinMode(SW3, INPUT_PULLUP);
 }
-void loop(){
-    if(!digitalRead(SW1))
-    {
-        Serial.println("stisknuto");
-    }
-    else
-    {
-        Serial.println("nestisknuto");
-    }
-    delay(100);
+
+void loop()
+{
+    digitalWrite(LED_R, !digitalRead(SW3));
+    digitalWrite(LED_G, !digitalRead(SW3));
+    digitalWrite(LED_B, !digitalRead(SW3));
+
+    delay(10);
 }

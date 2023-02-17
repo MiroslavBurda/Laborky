@@ -1,11 +1,14 @@
 #include <Arduino.h>
+#include "pinout.h"
 
-void setup(){
-    pinMode(26, INPUT_PULLUP);
-    Serial.begin(115200);
+void setup()
+{
+    pinMode(SW3, INPUT_PULLUP); // nastavení pinu tlačítka jako vstupní s pullupem
+    Serial.begin(115200); // nastavím komunikační rychlost sériové linky
 }
 
-void loop(){
-    Serial.println(!digitalRead(26));
-    Serial.println(digitalRead(26) ? "VYPNUTO" : "ZAPNUTO");
+void loop()
+{
+    Serial.println(digitalRead(SW3)); // přečtu stav tlačítka a vypíšu jej
+    delay(250); // počkám čtvrt sekundy
 }
